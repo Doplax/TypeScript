@@ -1,9 +1,8 @@
 "use strict";
 (() => {
-    let avengers = 10; // Inicializamos la variable con el valor 10
-    console.log(avengers); // Imprime: 10
-    const villains = 20; // Número de villanos
-    // Evaluamos si hay menos vengadores que villanos
+    let avengers = 10;
+    console.log(avengers);
+    const villains = 20;
     if (avengers < villains) {
         console.log('Estamos en problemas'); // Esto se imprimirá si avengers es menor que villains
     }
