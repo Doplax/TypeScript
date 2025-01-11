@@ -1,3 +1,3 @@
 "use strict";
-const nombre = 'pedro';
-console.log(nombre);
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./funciones/args-rest");

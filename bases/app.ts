@@ -1,2 +1,1 @@
-const nombre = 'pedro'
-console.log(nombre);
+import './funciones/args-rest'
