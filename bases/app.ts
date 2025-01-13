@@ -1,1 +1,1 @@
-import './classes/basic'
+import './classes/-short-way'
