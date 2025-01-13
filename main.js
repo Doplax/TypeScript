@@ -26,6 +26,9 @@ var __rest = (this && this.__rest) || function (s, e) {
         console.log(ironman, resto);
     };
     printAvenger(avengers);
+    const avengersArr = ['Cap. América', 'Ironman', 'Hulk'];
+    //A diferencia de los objetos podemos desestructurar con el nombre que queramos
+    const [, ironman,] = avengersArr;
 })();
 define("app", ["require", "exports", "./ES6/desestructuration"], function (require, exports) {
     "use strict";

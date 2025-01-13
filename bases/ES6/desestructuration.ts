@@ -26,4 +26,9 @@
 
     printAvenger(avengers);
 
+
+
+    const avengersArr: string[] = ['Cap. América', 'Ironman', 'Hulk'];
+    //A diferencia de los objetos podemos desestructurar con el nombre que queramos
+    const [ , ironman, ] = avengersArr;
 })();
