@@ -1,4 +1,1 @@
-//import './funciones/args-rest'
-(() => {
-
-})();
+import './ES6/desestructuration'
