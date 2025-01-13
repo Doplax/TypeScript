@@ -1,1 +1,1 @@
-import './ES6/desestructuration'
+import './classes/basic'
