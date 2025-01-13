@@ -1,1 +1,4 @@
-import './funciones/args-rest'
+//import './funciones/args-rest'
+(() => {
+
+})();
