@@ -1,5 +1,3 @@
-import { isBinaryOperatorToken } from "typescript";
-
 (() => {
   class Avenger {
     //private name;
