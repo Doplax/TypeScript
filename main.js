@@ -29,6 +29,8 @@
     }
     const wolverine = new Xmen('Wolverine', 'Logan', false);
     wolverine.getFullNameDesdeXmen();
+    console.log(wolverine.fullName); // Uso del Getter
+    wolverine.fullName = 'Leo'; // Uso del Setter
 })();
 define("app", ["require", "exports", "./classes/extends"], function (require, exports) {
     "use strict";
