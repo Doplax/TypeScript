@@ -107,6 +107,6 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "./bases/app.ts"
+    "./bases/interfaces/basics.ts"
   ],
 }
