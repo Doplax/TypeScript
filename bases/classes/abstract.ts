@@ -27,9 +27,9 @@
         console.log(character.realName);
     }
 
-    console.log(wolverine.salvarMundo());
-    console.log(magneto.conquistarMundo());
+    //console.log(wolverine.salvarMundo());
+    //console.log(magneto.conquistarMundo());
 
-    printName(wolverine);
+    //printName(wolverine);
   })();
   
