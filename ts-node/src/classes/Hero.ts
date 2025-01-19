@@ -1,10 +1,15 @@
+import powers  from "../data/powers";
 export class Hero {
   constructor(
     public name: string,
-    public power: string,
+    public powerId: number,
     public age: number,
     public planet: string
   ) {}
+
+  get power(): string {
+    return powers.find( power => power.id === this.powerId)?.desc || 'Not Found';
+  }
 }
 
 

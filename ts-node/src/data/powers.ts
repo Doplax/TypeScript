@@ -3,7 +3,7 @@ interface Power {
   desc: string;
 }
 
-const power: Power[] = [
+const powers: Power[] = [
   {
     id: 1,
     desc: "Money",
@@ -14,4 +14,4 @@ const power: Power[] = [
   },
 ];
 
-export default power;
+export default powers;
