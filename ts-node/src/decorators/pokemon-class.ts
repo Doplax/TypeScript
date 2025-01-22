@@ -16,8 +16,23 @@ const blockPrototype = function(constructor: Function){
     Object.seal(constructor.prototype);
 }
 
-@blockPrototype
 
+function CheckValidPokemonId(){
+    return function(target: any, propertyKey: string, descriptor: PropertyDescriptor){
+        
+        const originalMethod = descriptor.value;
+        
+        descriptor.value = (id: number) => {
+            if( id < 1 || id > 800) {
+                return console.error('El id del pokemon debe estar entre 1 y 800')
+            } else {
+                originalMethod(id);
+            }
+
+        } 
+    }
+}
+@blockPrototype
 @printToConsoleConditional(false) // Llamamos al decorado
 export class Pokemon {
 
@@ -25,6 +40,11 @@ export class Pokemon {
 
     constructor(
         public name: string,
-    ) {
+    ) {}
+
+    @CheckValidPokemonId()
+    savePokemonToDB(id: number){
+        console.log(`Saving ${this.name} to the DB with id: ${id}`);
     }
 }
+
