@@ -1,50 +1,79 @@
-function printToConsole(constructor: Function){
-    console.log(constructor);
+function printToConsole( constructor: Function ) {
+    console.log( constructor )
 }
 
-const printToConsoleConditional = (print: boolean = false): Function => {
-    if(print){
-        return printToConsole; // No estamos invocando la función, sino mandando su referencia
-    }else{
-        return () => {};
+const printToConsoleConditional = ( print: boolean = false ):Function => {
+    if ( print ) {
+        return printToConsole;
+    }else {
+        return () => {}
     }
 }
 
-//Bloauqador para bloquear el prototipo de una clase
-const blockPrototype = function(constructor: Function){
-    Object.seal(constructor); //Prevents the modification of attributes of existing properties, and prevents the addition of new properties.
-    Object.seal(constructor.prototype);
+
+const bloquearPrototipo = function( constructor: Function ) {
+    Object.seal( constructor )
+    Object.seal( constructor.prototype )
 }
 
-
-function CheckValidPokemonId(){
-    return function(target: any, propertyKey: string, descriptor: PropertyDescriptor){
+function CheckValidPokemonId() {
+    return function( target: any, propertyKey: string, descriptor: PropertyDescriptor ) {
         
         const originalMethod = descriptor.value;
-        
-        descriptor.value = (id: number) => {
-            if( id < 1 || id > 800) {
-                return console.error('El id del pokemon debe estar entre 1 y 800')
-            } else {
-                originalMethod(id);
-            }
 
-        } 
+        descriptor.value = ( id: number ) => {
+            if( id < 1 || id > 800 ) {
+                return console.error('El id del pokemon debe de estar entre 1 y 800')
+            } else {
+                return originalMethod(id)
+            }
+        }
+        // descriptor.value = () => console.log('Hola mundo');
+
     }
 }
-@blockPrototype
-@printToConsoleConditional(false) // Llamamos al decorado
+
+
+function readonly( isWritable: boolean = true ):Function {
+    return function(target: any, propertyKey: string ){
+        
+        const descriptor: PropertyDescriptor = {
+            get() {
+                console.log( this )
+                return 'Fernando'
+            },
+            set( this, val ){
+                // console.log(this, val )
+                Object.defineProperty( this, propertyKey, {
+                    value: val,
+                    writable: !isWritable,
+                    enumerable: false
+                })
+            }
+        }
+        
+        return descriptor;
+    }
+}
+
+
+
+
+@bloquearPrototipo
+@printToConsoleConditional( false )
 export class Pokemon {
 
-    public publicApi: string = 'https://pokeapi.com';
+    @readonly(true)
+    public publicApi: string = 'https://pokeapi.co'
 
     constructor(
-        public name: string,
-    ) {}
+        public name: string
+    ){}
+
 
     @CheckValidPokemonId()
-    savePokemonToDB(id: number){
-        console.log(`Saving ${this.name} to the DB with id: ${id}`);
+    savePokemonToDB( id: number ) {
+        console.log(`Pokemon guardado en DB ${ id }`);
     }
-}
 
+}
